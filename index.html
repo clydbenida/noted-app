@@ -10,8 +10,13 @@
     />
   </head>
 
-  <body>
-    <div id="root"></div>
+  <body style="-webkit-app-region: drag">
+    <div id="root" style="-webkit-app-region: no-drag"></div>
+    <script>
+      var webFrame = require('electron').webFrame;
+      webFrame.setVisualZoomLevelLimits(1, 1);
+      webFrame.setLayoutZoomLevelLimits(0, 0);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

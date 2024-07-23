@@ -14,7 +14,16 @@ function createWindow(): void {
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
-    }
+    },
+    transparent: true,
+    frame: false,
+    thickFrame: true
+  })
+
+  const webContents = mainWindow.webContents
+  webContents.on('did-finish-load', () => {
+    webContents.setZoomFactor(1)
+    webContents.setVisualZoomLevelLimits(1, 1)
   })
 
   mainWindow.on('ready-to-show', () => {

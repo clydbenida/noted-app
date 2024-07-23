@@ -15,7 +15,12 @@ export default function PasswordTextbox(): JSX.Element {
         className="my-2"
         placeholder="Password"
         customControl={
-          <Button variant="outlined" onClick={toggleShowPassword} className="text-xs px-1">
+          <Button
+            variant="outlined"
+            size="sm"
+            onClick={toggleShowPassword}
+            className="text-xs px-1"
+          >
             {showPassword ? 'Hide' : 'Show'}
           </Button>
         }
