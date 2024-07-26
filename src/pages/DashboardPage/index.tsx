@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import LoadingOverlay from './components/LoadingOverlay'
 import Sidebar from '@renderer/components/Sidebar'
+import NotedEditor from '@renderer/components/Editor'
 
 export default function DashboardPage(): JSX.Element {
   // TODO: Simulate loading
@@ -9,7 +10,7 @@ export default function DashboardPage(): JSX.Element {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 2000)
   }, [])
 
   return isLoading ? (
@@ -17,7 +18,9 @@ export default function DashboardPage(): JSX.Element {
   ) : (
     <div className="flex h-full">
       <Sidebar />
-      <main>This is the dashboard page</main>
+      <main className="bg-tp-black w-full pt-10 px-24">
+        <NotedEditor />
+      </main>
     </div>
   )
 }

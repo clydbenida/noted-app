@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       'tp-white': '#ffffff5a',
       'tp-gray': '#afafaf5a',
+      'tp-black': '#0a0a0a6f',
       slate: 'rgb(100 116 139)',
       gray: 'rgb(17 24 39)',
       'gray-1': 'rgb(107 114 128)',
