@@ -29,11 +29,15 @@ export default function withShortcuts(editor: BaseEditor & ReactEditor): typeof 
         }
 
         const newProperties: Partial<CustomElement> = {
-          type: type.type
+          ...type
         }
         Transforms.setNodes<SlateElement>(editor, newProperties, {
           match: (n) => SlateElement.isElement(n) && Editor.isBlock(editor, n)
         })
+
+        if (type.type === 'heading') {
+          Editor.addMark(editor, 'bold', true)
+        }
 
         if (type.type === 'unordered-list') {
           const list: UnorderedListElement = {
@@ -75,6 +79,8 @@ export default function withShortcuts(editor: BaseEditor & ReactEditor): typeof 
             type: 'paragraph'
           }
           Transforms.setNodes(editor, newProperties)
+
+          Editor.addMark(editor, 'bold', false)
 
           if (block.type === 'unordered-list') {
             Transforms.unwrapNodes(editor, {

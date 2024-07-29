@@ -1,8 +1,13 @@
 import { useCallback } from 'react'
 import { RenderElementProps } from 'slate-react'
 import EditorElementWrapper from '../components/EditorElementWrapper'
-import ParagraphElement from '../components/EditorElements/ParagraphElement'
-import HeadingElement from '../components/EditorElements/HeadingElement'
+import {
+  ParagraphElement,
+  HeadingElement,
+  ListElement,
+  CodeElement,
+  BlockQuoteElement
+} from '../components/EditorElements'
 
 export default function useRenderElement(): (props: RenderElementProps) => JSX.Element {
   const renderElement = useCallback((props: RenderElementProps) => {
@@ -15,10 +20,33 @@ export default function useRenderElement(): (props: RenderElementProps) => JSX.E
         )
 
       case 'code':
+        return (
+          <EditorElementWrapper>
+            <CodeElement {...props} />
+          </EditorElementWrapper>
+        )
 
       case 'ordered-list':
+        return (
+          <EditorElementWrapper>
+            <ListElement {...props} />
+          </EditorElementWrapper>
+        )
+
       case 'unordered-list':
+        return (
+          <EditorElementWrapper>
+            <ListElement {...props} />
+          </EditorElementWrapper>
+        )
+
       case 'blockquote':
+        return (
+          <EditorElementWrapper>
+            <BlockQuoteElement {...props} />
+          </EditorElementWrapper>
+        )
+
       case 'paragraph':
       default:
         return (
