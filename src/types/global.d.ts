@@ -1,22 +1,23 @@
 // This example is for an Editor with `ReactEditor` and `HistoryEditor`
-import { BaseEditor, BaseElement } from 'slate'
+import { BaseEditor } from 'slate'
 import { ReactEditor } from 'slate-react'
+import {
+  CodeElement,
+  CustomText,
+  HeadingElement,
+  ParagraphElement,
+  OrderedListElement,
+  UnorderedListElement,
+  BlockQuoteElement
+} from './ElementTypes'
 
-type ElementType = 'paragraph' | 'code'
-
-export type ParagraphElement = {
-  type: 'paragraph'
-  children: CustomText[]
-}
-
-export type CodeElement = {
-  type: 'code'
-  children: { text: string; language: string }
-}
-
-export type CustomElement = ParagraphElement | CodeElement
-
-export type CustomText = { text: string; bold?: true }
+export type CustomElement =
+  | ParagraphElement
+  | CodeElement
+  | HeadingElement
+  | OrderedListElement
+  | UnorderedListElement
+  | BlockQuoteElement
 
 declare module 'slate' {
   interface CustomTypes {
