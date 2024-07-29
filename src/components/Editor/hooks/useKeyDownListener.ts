@@ -7,22 +7,11 @@ export default function useKeyDownListener(
 ): (e: React.KeyboardEvent<HTMLDivElement>) => void {
   const keyDownListener = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.currentTarget.innerText === '###') {
-        Transforms.setNodes(
-          editor,
-          { type: 'heading', level: '3', children: [{ text: '', bold: true }] },
-          { match: (n) => Element.isElement(n) && Editor.isBlock(editor, n) }
-        )
-
-        Editor.addMark(editor, 'bold', true)
-      }
-
       if (event.ctrlKey) {
         event.preventDefault()
         switch (event.key) {
           case 'b':
             Editor.addMark(editor, 'bold', true)
-            console.log('Text set to bold?')
         }
       }
 
